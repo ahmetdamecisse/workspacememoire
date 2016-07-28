@@ -11,7 +11,7 @@
         <h:outputLabel
             value="Select your resource, depending on selection you may be asked to login"></h:outputLabel>
         <br></br>
-        <h:inputText id="option" value="#{navigator.pageToNavigate}" id="optionId" required="True" requiredMessage="Please Enter page to navigate, valid values are ToSecure and ToUnSecure"></h:inputText>
+        <h:inputText value="#{navigator.pageToNavigate}" id="optionId" required="True" requiredMessage="Please Enter page to navigate, valid values are ToSecure and ToUnSecure"></h:inputText>
         <h:commandButton value="Navigate" action="#{navigator.navigateTo}">
         </h:commandButton>
     </h:form>
