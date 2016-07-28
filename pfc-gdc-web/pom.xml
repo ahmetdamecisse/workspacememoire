@@ -7,7 +7,7 @@
 	<artifactId>pfc-gdc-web</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>pfc-gdc-web</name>
+	<name>pfcgdcweb</name>
 	<url>http://www.mkyong.com/tutorials/spring-security-tutorials/</url>
 
 	<licenses>
@@ -95,6 +95,19 @@
 	  <groupId>org.primefaces</groupId>
 	  <artifactId>primefaces</artifactId>
 	  <version>6.0</version>
+	 </dependency>
+	 <dependency>
+	  <groupId>javax</groupId>
+	  <artifactId>javaee-web-api</artifactId>
+	  <version>7.0</version>
+	  <scope>provided</scope>
+	  <type>jar</type>
+	 </dependency>
+	 <dependency>
+	  <groupId>javax</groupId>
+	  <artifactId>javaee-api</artifactId>
+	  <version>7.0</version>
+	  <type>jar</type>
 	 </dependency>
 	</dependencies>
 

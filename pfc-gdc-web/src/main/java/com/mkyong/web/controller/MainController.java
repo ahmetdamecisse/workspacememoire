@@ -19,7 +19,7 @@ public class MainController {
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "La page d'accueil de notre application. On ne demande pas une connexion.");
 		model.addObject("message", "C'est la page par défaut!");
-		model.setViewName("hello");
+		model.setViewName("home");
 		return model;
 
 	}
