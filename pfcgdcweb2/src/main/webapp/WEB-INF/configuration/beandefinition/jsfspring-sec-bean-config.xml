@@ -10,4 +10,7 @@
         
     <beans:bean id="navigator" name="navigator" class="com.gdc.pfcgdcweb2.beans.Navigator" scope="session">
     </beans:bean>
+    <beans:bean id="loginBean" name="loginBean" class="com.gdc.pfcgdcweb2.beans.LoginBean" scope="prototype">
+        <beans:property name="authenticationManager" ref="authenticationManager"></beans:property>
+    </beans:bean>
 </beans:beans>
