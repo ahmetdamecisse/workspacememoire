@@ -1,0 +1,140 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.gdc.entites;
+
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+/**
+ *
+ * @author a618092
+ */
+@Entity
+@Table(name = "recruteur")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Recruteur.findAll", query = "SELECT r FROM Recruteur r"),
+    @NamedQuery(name = "Recruteur.findByUsername", query = "SELECT r FROM Recruteur r WHERE r.username = :username")})
+public class Recruteur implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
+    @Column(name = "username")
+    private String username;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
+    private List<Fichedeposte> fichedeposteList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
+    private List<Notification> notificationList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
+    private List<Entretien> entretienList;
+    @JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+    private Users users;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
+    private List<Fichedetest> fichedetestList;
+
+    public Recruteur() {
+    }
+
+    public Recruteur(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @XmlTransient
+    public List<Fichedeposte> getFichedeposteList() {
+        return fichedeposteList;
+    }
+
+    public void setFichedeposteList(List<Fichedeposte> fichedeposteList) {
+        this.fichedeposteList = fichedeposteList;
+    }
+
+    @XmlTransient
+    public List<Notification> getNotificationList() {
+        return notificationList;
+    }
+
+    public void setNotificationList(List<Notification> notificationList) {
+        this.notificationList = notificationList;
+    }
+
+    @XmlTransient
+    public List<Entretien> getEntretienList() {
+        return entretienList;
+    }
+
+    public void setEntretienList(List<Entretien> entretienList) {
+        this.entretienList = entretienList;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+
+    @XmlTransient
+    public List<Fichedetest> getFichedetestList() {
+        return fichedetestList;
+    }
+
+    public void setFichedetestList(List<Fichedetest> fichedetestList) {
+        this.fichedetestList = fichedetestList;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (username != null ? username.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Recruteur)) {
+            return false;
+        }
+        Recruteur other = (Recruteur) object;
+        if ((this.username == null && other.username != null) || (this.username != null && !this.username.equals(other.username))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.gdc.atosgdcmetier.entites.Recruteur[ username=" + username + " ]";
+    }
+    
+}

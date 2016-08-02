@@ -15,9 +15,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  * @author a618092
  */
-public class ClientMetier {
+public class ClientTestMetier {
 
     public static void main(String[] args) {
+
+        System.out.println("ghfdvfrfhbg'trfgvbghfvjhgfvn");
+        System.out.println("ghfdvfrfhbg'trfgvbghfvjhgfvn");
+        System.out.println("ghfdvfrfhbg'trfgvbghfvjhgfvn");
         try {
             ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config-metier-dao.xml");
             Imetier metier = (Imetier) ctx.getBean("metier");
@@ -26,7 +30,12 @@ public class ClientMetier {
             System.out.println("******************************************************************************");
             System.out.println("*********************couche métier: Lies des utilisateurs******************************");
             System.out.println(users);
-        } catch (Throwable th) {
+        } catch (Throwable ex) {
+            System.out.println("Erreur++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            while (ex != null) {
+                System.out.println(String.format("%s : %s", ex.getClass().getName(), ex.getMessage()));
+                ex = ex.getCause();
+            }
         }
     }
 }

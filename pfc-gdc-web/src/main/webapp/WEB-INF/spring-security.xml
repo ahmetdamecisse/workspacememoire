@@ -7,10 +7,11 @@
 
     <!-- enable use-expressions -->
     <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/candidathome**" access="hasRole('ROLE_CANDIDAT')" />	
         <intercept-url pattern="/recruteurhome**" access="hasRole('ROLE_RECRUTEUR')" />	
-          <intercept-url pattern="/anonymousepage**" access="hasRole('ROLE_ANONYMOUS')" />	
+        <intercept-url pattern="/anonymousepage**" access="hasRole('ROLE_ANONYMOUS')" />
+         <intercept-url pattern="/index**" access="hasRole('ROLE_ANONYMOUS')" />
         <!-- access denied page -->
         <access-denied-handler error-page="/403" />
         <form-login 
@@ -28,9 +29,9 @@
     <authentication-manager>
         <authentication-provider>
             <jdbc-user-service data-source-ref="dataSource"
-                                           users-by-username-query=
+                               users-by-username-query=
 					"select username,password, enabled from users where username=?"
-                                           authorities-by-username-query=
+                               authorities-by-username-query=
 					"select username, role from user_roles where username =?  " />
         </authentication-provider>
     </authentication-manager>

@@ -29,7 +29,18 @@
                         href="javascript:formSubmit()"> Logout</a>
                 </h2>
             </c:if>
-            
-          </sec:authorize>
+
+            <div>
+                <f:view >
+                    <p:panel id="primefacesPanel"  header="Hello World"
+                             footer="Footer"
+                             style="position: relative; width: 500px; " >
+                        <h:outputText value="Primefaces is great. My first application using Primefaces"/>
+                    </p:panel>
+                </f:view>
+            </div>
+
+        </sec:authorize>
+
     </body>
 </html>
