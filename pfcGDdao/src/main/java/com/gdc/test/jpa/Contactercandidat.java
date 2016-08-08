@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.gdc.test.jpa;
 
 import java.io.Serializable;
@@ -15,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author a618092
+ * @author Abdoulahi
  */
 @Entity
 @Table(name = "contactercandidat")
@@ -70,7 +71,7 @@ public class Contactercandidat implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gdc.test.jpa.Contactercandidat[ contactercandidatPK=" + contactercandidatPK + " ]";
+        return "entites.Contactercandidat[ contactercandidatPK=" + contactercandidatPK + " ]";
     }
     
 }

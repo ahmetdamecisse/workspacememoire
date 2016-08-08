@@ -7,7 +7,6 @@ package com.gdc.entites;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,15 +14,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -49,7 +45,6 @@ public class Users implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 150)
     @Column(name = "username")
     private String username;
@@ -69,12 +64,10 @@ public class Users implements Serializable {
     @Column(name = "telephone")
     private String telephone;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 254)
     @Column(name = "password")
     private String password;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "enabled")
     private short enabled;
     @Size(max = 254)
@@ -87,8 +80,7 @@ public class Users implements Serializable {
     private Integer version;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "users")
     private Administrateur administrateur;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
-    private List<UserRoles> userRolesList;
+   
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "users")
     private Candidat candidat;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "users")
@@ -203,14 +195,7 @@ public class Users implements Serializable {
         this.administrateur = administrateur;
     }
 
-    @XmlTransient
-    public List<UserRoles> getUserRolesList() {
-        return userRolesList;
-    }
-
-    public void setUserRolesList(List<UserRoles> userRolesList) {
-        this.userRolesList = userRolesList;
-    }
+    
 
     public Candidat getCandidat() {
         return candidat;

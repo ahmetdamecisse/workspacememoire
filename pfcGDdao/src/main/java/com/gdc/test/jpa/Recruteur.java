@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.gdc.test.jpa;
 
 import java.io.Serializable;
@@ -15,15 +16,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author a618092
+ * @author Abdoulahi
  */
 @Entity
 @Table(name = "recruteur")
@@ -32,14 +34,14 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Recruteur.findAll", query = "SELECT r FROM Recruteur r"),
     @NamedQuery(name = "Recruteur.findByUsername", query = "SELECT r FROM Recruteur r WHERE r.username = :username")})
 public class Recruteur implements Serializable {
-       private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
     @Column(name = "username")
     private String username;
    
-   
-    
     @JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Users users;
@@ -60,7 +62,7 @@ public class Recruteur implements Serializable {
         this.username = username;
     }
 
-  
+
     public Users getUsers() {
         return users;
     }
@@ -69,7 +71,8 @@ public class Recruteur implements Serializable {
         this.users = users;
     }
 
-  
+   
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -92,8 +95,7 @@ public class Recruteur implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gdc.test.jpa.Recruteur[ username=" + username + " ]";
+        return "entites.Recruteur[ username=" + username + " ]";
     }
-
     
 }

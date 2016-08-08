@@ -6,26 +6,9 @@
 package com.gdc.test.dao;
 
 import com.gdc.test.exceptions.pfcgdcexception;
-import com.gdc.test.jpa.Administrateur;
-import com.gdc.test.jpa.Bdd;
-import com.gdc.test.jpa.Candidat;
-import com.gdc.test.jpa.Entretien;
-import com.gdc.test.jpa.Experiencesprofessionnelles;
-import com.gdc.test.jpa.Fichedeposte;
-import com.gdc.test.jpa.Fichedetest;
-import com.gdc.test.jpa.Formation;
-import com.gdc.test.jpa.Langages;
-import com.gdc.test.jpa.Langues;
-import com.gdc.test.jpa.Materielssystemesexploitation;
-import com.gdc.test.jpa.Methodologie;
-import com.gdc.test.jpa.Modelisation;
-import com.gdc.test.jpa.Notification;
-import com.gdc.test.jpa.Outils;
-import com.gdc.test.jpa.Profil;
-import com.gdc.test.jpa.Profilgl;
-import com.gdc.test.jpa.Recruteur;
-import com.gdc.test.jpa.Users;
+import com.gdc.test.jpa.*;
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -55,7 +38,25 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addUtilisateur(Users u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            em.persist(u);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de l'ajout de l'utilisateur" + u.getNom());
+            throw new pfcgdcexception(th, 2);
+        }
+    }
+
+    public boolean ceUsernameEstIlUtiliseDeja(String username) {
+        List<Users> users = getALLutilisateur();
+        if (users.size()>0) {
+            for (Iterator<Users> iterator = users.iterator(); iterator.hasNext();) {
+                Users next = iterator.next();
+                if (next.getUsername().equalsIgnoreCase(username)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void removeUtilisateur(Integer idUtili) {
@@ -103,7 +104,12 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addCandidat(Candidat c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            em.persist(c);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de l'ajout du du candidat" + c.getUsername());
+            throw new pfcgdcexception(th, 3);
+        }
     }
 
     public void removeCandidat(Candidat c) {
@@ -167,7 +173,12 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addBdd(Bdd bdd) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            em.persist(bdd);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de l'ajout de la bdd" + bdd.getIdTypeDeProfil());
+            throw new pfcgdcexception(th, 3);
+        }
     }
 
     public void removeBdd(Bdd bdd) {
@@ -495,7 +506,14 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addProfil(Profil p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        try {
+            em.persist(p);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de l'ajout du profil");
+            throw new pfcgdcexception(th, 5);
+        }
+
     }
 
     public void removeProfil(Profil p) {
@@ -523,7 +541,12 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addProfilgl(Profilgl p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            em.persist(p);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de l'ajout du profilGl");
+            throw new pfcgdcexception(th, 5);
+        }
     }
 
     public void removeProfilgl(Profilgl p) {

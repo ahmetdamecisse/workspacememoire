@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.gdc.test.jpa;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,11 +19,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author a618092
+ * @author Abdoulahi
  */
 @Entity
 @Table(name = "fichedeposte")
@@ -37,14 +42,19 @@ public class Fichedeposte implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idFichePoste")
     private Integer idFichePoste;
+    @Size(max = 254)
     @Column(name = "intitulePoste")
     private String intitulePoste;
+    @Size(max = 3000)
     @Column(name = "description")
     private String description;
+    @Size(max = 3000)
     @Column(name = "qualiteRequise")
     private String qualiteRequise;
+    @Size(max = 3000)
     @Column(name = "connaissanceTechni")
     private String connaissanceTechni;
     @Column(name = "version")
@@ -139,7 +149,7 @@ public class Fichedeposte implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gdc.test.jpa.Fichedeposte[ idFichePoste=" + idFichePoste + " ]";
+        return "entites.Fichedeposte[ idFichePoste=" + idFichePoste + " ]";
     }
     
 }

@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.gdc.test.jpa;
 
 import java.io.Serializable;
@@ -15,11 +16,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author a618092
+ * @author Abdoulahi
  */
 @Entity
 @Table(name = "langues")
@@ -33,10 +36,13 @@ public class Langues implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @NotNull
     @Column(name = "idTypeDeProfil")
     private Integer idTypeDeProfil;
+    @Size(max = 254)
     @Column(name = "nom")
     private String nom;
+    @Size(max = 254)
     @Column(name = "niveau")
     private String niveau;
     @JoinColumn(name = "idTypeDeProfil", referencedColumnName = "idTypeDeProfil", insertable = false, updatable = false)
@@ -104,7 +110,7 @@ public class Langues implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gdc.test.jpa.Langues[ idTypeDeProfil=" + idTypeDeProfil + " ]";
+        return "entites.Langues[ idTypeDeProfil=" + idTypeDeProfil + " ]";
     }
     
 }

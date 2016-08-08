@@ -6,9 +6,7 @@
 package com.gdc.entites;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,13 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,7 +33,6 @@ public class Candidat implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 150)
     @Column(name = "username")
     private String username;
@@ -48,8 +42,7 @@ public class Candidat implements Serializable {
     @JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Users users;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "candidat")
-    private List<Cherchercandidat> cherchercandidatList;
+   
 
     public Candidat() {
     }
@@ -82,14 +75,7 @@ public class Candidat implements Serializable {
         this.users = users;
     }
 
-    @XmlTransient
-    public List<Cherchercandidat> getCherchercandidatList() {
-        return cherchercandidatList;
-    }
-
-    public void setCherchercandidatList(List<Cherchercandidat> cherchercandidatList) {
-        this.cherchercandidatList = cherchercandidatList;
-    }
+  
 
     @Override
     public int hashCode() {

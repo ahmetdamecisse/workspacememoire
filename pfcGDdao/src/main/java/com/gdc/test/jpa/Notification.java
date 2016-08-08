@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.gdc.test.jpa;
 
 import java.io.Serializable;
@@ -10,6 +11,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -19,11 +22,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author a618092
+ * @author Abdoulahi
  */
 @Entity
 @Table(name = "notification")
@@ -36,21 +41,27 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Notification.findByCorpsMessage", query = "SELECT n FROM Notification n WHERE n.corpsMessage = :corpsMessage"),
     @NamedQuery(name = "Notification.findByDateNotification", query = "SELECT n FROM Notification n WHERE n.dateNotification = :dateNotification")})
 public class Notification implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
     @Basic(optional = false)
-    @Column(name = "idNotification")
-    private Integer idNotification;
-    @Column(name = "destinateur")
-    private String destinateur;
-    @Column(name = "destinataire")
-    private String destinataire;
-    @Column(name = "corpsMessage")
-    private String corpsMessage;
-    @Basic(optional = false)
+    @NotNull
     @Lob
     @Column(name = "pj")
     private byte[] pj;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idNotification")
+    private Integer idNotification;
+    @Size(max = 254)
+    @Column(name = "destinateur")
+    private String destinateur;
+    @Size(max = 6000)
+    @Column(name = "destinataire")
+    private String destinataire;
+    @Size(max = 50000)
+    @Column(name = "corpsMessage")
+    private String corpsMessage;
     @Column(name = "dateNotification")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateNotification;
@@ -102,14 +113,6 @@ public class Notification implements Serializable {
         this.corpsMessage = corpsMessage;
     }
 
-    public byte[] getPj() {
-        return pj;
-    }
-
-    public void setPj(byte[] pj) {
-        this.pj = pj;
-    }
-
     public Date getDateNotification() {
         return dateNotification;
     }
@@ -148,7 +151,15 @@ public class Notification implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gdc.test.jpa.Notification[ idNotification=" + idNotification + " ]";
+        return "entites.Notification[ idNotification=" + idNotification + " ]";
+    }
+
+    public byte[] getPj() {
+        return pj;
+    }
+
+    public void setPj(byte[] pj) {
+        this.pj = pj;
     }
     
 }

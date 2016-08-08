@@ -6,7 +6,6 @@
 package com.gdc.entites;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,13 +13,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -40,7 +36,6 @@ public class Profil implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "idTypeDeProfil")
     private Integer idTypeDeProfil;
     @Column(name = "nombreAnneesExperience")
@@ -54,8 +49,6 @@ public class Profil implements Serializable {
     @Size(max = 254)
     @Column(name = "etatProfil")
     private String etatProfil;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTypeDeProfil")
-    private List<Candidat> candidatList;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "profil")
     private Profilgl profilgl;
 
@@ -106,14 +99,7 @@ public class Profil implements Serializable {
         this.etatProfil = etatProfil;
     }
 
-    @XmlTransient
-    public List<Candidat> getCandidatList() {
-        return candidatList;
-    }
-
-    public void setCandidatList(List<Candidat> candidatList) {
-        this.candidatList = candidatList;
-    }
+    
 
     public Profilgl getProfilgl() {
         return profilgl;

@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.gdc.test.jpa;
 
 import java.io.Serializable;
@@ -17,12 +18,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author a618092
+ * @author Abdoulahi
  */
 @Entity
 @Table(name = "listereponse")
@@ -38,6 +40,7 @@ public class Listereponse implements Serializable {
     @Basic(optional = false)
     @Column(name = "idReponse")
     private Integer idReponse;
+    @Size(max = 3000)
     @Column(name = "reponse")
     private String reponse;
     @ManyToMany(mappedBy = "listereponseList")
@@ -97,7 +100,7 @@ public class Listereponse implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gdc.test.jpa.Listereponse[ idReponse=" + idReponse + " ]";
+        return "entites.Listereponse[ idReponse=" + idReponse + " ]";
     }
     
 }

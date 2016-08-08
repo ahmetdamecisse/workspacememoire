@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.gdc.test.jpa;
 
 import java.io.Serializable;
@@ -15,18 +16,18 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author a618092
+ * @author Abdoulahi
  */
 @Entity
 @Table(name = "users")
@@ -45,27 +46,38 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Users.findByDateDeNaissance", query = "SELECT u FROM Users u WHERE u.dateDeNaissance = :dateDeNaissance"),
     @NamedQuery(name = "Users.findByVersion", query = "SELECT u FROM Users u WHERE u.version = :version")})
 public class Users implements Serializable {
-       private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
     @Column(name = "username")
     private String username;
+    @Size(max = 254)
     @Column(name = "nom")
     private String nom;
+    @Size(max = 254)
     @Column(name = "prenom")
     private String prenom;
+    @Size(max = 500)
     @Column(name = "localisation")
     private String localisation;
+    @Size(max = 254)
     @Column(name = "mail")
     private String mail;
+    @Size(max = 254)
     @Column(name = "telephone")
     private String telephone;
     @Basic(optional = false)
+    @Size(min = 1, max = 254)
+    @NotNull
     @Column(name = "password")
     private String password;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "enabled")
     private short enabled;
+    @Size(max = 254)
     @Column(name = "specialite")
     private String specialite;
     @Column(name = "dateDeNaissance")
@@ -100,6 +112,46 @@ public class Users implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+//pour créer un administrateur
+    public Users(String username, String nom, String prenom, String localisation, String mail, String telephone, String password, String specialite, Date dateDeNaissance, Administrateur administrateur) {
+        this.username = username;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.localisation = localisation;
+        this.mail = mail;
+        this.telephone = telephone;
+        this.password = password;
+        this.specialite = specialite;
+        this.dateDeNaissance = dateDeNaissance;
+        this.administrateur = administrateur;
+    }
+//pour créer un candidat
+    public Users(String username, String nom, String prenom, String localisation, String mail, String telephone, String password, String specialite, Date dateDeNaissance, short enabled,Integer version) {
+        this.username = username;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.localisation = localisation;
+        this.mail = mail;
+        this.telephone = telephone;
+        this.password = password;
+        this.specialite = specialite;
+        this.dateDeNaissance = dateDeNaissance;
+        this.version = version;
+        this.enabled=enabled;
+    }
+//pour créer un recruteur
+    public Users(String username, String nom, String prenom, String localisation, String mail, String telephone, String password, String specialite, Date dateDeNaissance, Recruteur recruteur) {
+        this.username = username;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.localisation = localisation;
+        this.mail = mail;
+        this.telephone = telephone;
+        this.password = password;
+        this.specialite = specialite;
+        this.dateDeNaissance = dateDeNaissance;
+        this.recruteur = recruteur;
     }
 
     public String getNom() {
@@ -190,6 +242,7 @@ public class Users implements Serializable {
         this.administrateur = administrateur;
     }
 
+   
     public Candidat getCandidat() {
         return candidat;
     }
@@ -228,8 +281,7 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "username=" + username +" password="+password+" nom="+nom +" prenom="+prenom +" localisation="+localisation +" mail="+mail+" telephone="+telephone+" enabled="+enabled+" specialité="+specialite+" date naiss="+dateDeNaissance+" version="+version+"\n";
+        return "entites.Users[ username=" + username + " ]";
     }
-
-       
+    
 }

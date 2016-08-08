@@ -3,22 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.gdc.test.jpa;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  *
- * @author a618092
+ * @author Abdoulahi
  */
 @Embeddable
 public class SuivreentrtienPK implements Serializable {
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
     @Column(name = "username")
     private String username;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "idEntretien")
     private int idEntretien;
 
@@ -72,7 +79,7 @@ public class SuivreentrtienPK implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gdc.test.jpa.SuivreentrtienPK[ username=" + username + ", idEntretien=" + idEntretien + " ]";
+        return "entites.SuivreentrtienPK[ username=" + username + ", idEntretien=" + idEntretien + " ]";
     }
     
 }

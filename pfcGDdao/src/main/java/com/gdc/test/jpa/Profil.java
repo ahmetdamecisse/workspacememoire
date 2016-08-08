@@ -3,23 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.gdc.test.jpa;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author a618092
+ * @author Abdoulahi
  */
 @Entity
 @Table(name = "profil")
@@ -32,24 +39,41 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Profil.findByCompetencesFonctionnelles", query = "SELECT p FROM Profil p WHERE p.competencesFonctionnelles = :competencesFonctionnelles"),
     @NamedQuery(name = "Profil.findByEtatProfil", query = "SELECT p FROM Profil p WHERE p.etatProfil = :etatProfil")})
 public class Profil implements Serializable {
-       private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idTypeDeProfil")
     private Integer idTypeDeProfil;
     @Column(name = "nombreAnneesExperience")
     private Integer nombreAnneesExperience;
+    @Size(max = 1000)
     @Column(name = "principalesCompetences")
     private String principalesCompetences;
+    @Size(max = 1000)
     @Column(name = "competencesFonctionnelles")
     private String competencesFonctionnelles;
+    @Size(max = 254)
     @Column(name = "etatProfil")
     private String etatProfil;
-   
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "profil")
     private Profilgl profilgl;
 
     public Profil() {
+    }
+
+    public Profil(Integer idTypeDeProfil, Integer nombreAnneesExperience, String principalesCompetences, String competencesFonctionnelles, String etatProfil) {
+        this.idTypeDeProfil = idTypeDeProfil;
+        this.nombreAnneesExperience = nombreAnneesExperience;
+        this.principalesCompetences = principalesCompetences;
+        this.competencesFonctionnelles = competencesFonctionnelles;
+        this.etatProfil = etatProfil;
+    }
+
+    public Profil(Integer idTypeDeProfil, Profilgl profilgl) {
+        this.idTypeDeProfil = idTypeDeProfil;
+        this.profilgl = profilgl;
     }
 
     public Profil(Integer idTypeDeProfil) {
@@ -96,7 +120,6 @@ public class Profil implements Serializable {
         this.etatProfil = etatProfil;
     }
 
-
     public Profilgl getProfilgl() {
         return profilgl;
     }
@@ -127,8 +150,7 @@ public class Profil implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gdc.test.jpa.Profil[ idTypeDeProfil=" + idTypeDeProfil + " ]";
+        return "entites.Profil[ idTypeDeProfil=" + idTypeDeProfil + " ]";
     }
-
-   
+    
 }

@@ -316,4 +316,6 @@ public interface Idao {
     
     //login et le mot de passe pour connaitre si un candidat s'est connecté ou un employeur.
     public String loginControl(String login,String password);
+    //test d'existence de username
+    public boolean ceUsernameEstIlUtiliseDeja(String username);
 }

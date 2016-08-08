@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.gdc.test.jpa;
 
 import java.io.Serializable;
@@ -18,11 +19,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author a618092
+ * @author Abdoulahi
  */
 @Entity
 @Table(name = "formation")
@@ -38,15 +41,19 @@ public class Formation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @NotNull
     @Column(name = "idTypeDeProfil")
     private Integer idTypeDeProfil;
+    @Size(max = 254)
     @Column(name = "nomDiplome")
     private String nomDiplome;
+    @Size(max = 254)
     @Column(name = "universite")
     private String universite;
     @Column(name = "anneeObtention")
     @Temporal(TemporalType.DATE)
     private Date anneeObtention;
+    @Size(max = 254)
     @Column(name = "mention")
     private String mention;
     @JoinColumn(name = "idTypeDeProfil", referencedColumnName = "idTypeDeProfil", insertable = false, updatable = false)
@@ -130,7 +137,7 @@ public class Formation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gdc.test.jpa.Formation[ idTypeDeProfil=" + idTypeDeProfil + " ]";
+        return "entites.Formation[ idTypeDeProfil=" + idTypeDeProfil + " ]";
     }
     
 }

@@ -18,7 +18,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -37,16 +36,10 @@ public class Recruteur implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 150)
     @Column(name = "username")
     private String username;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
-    private List<Fichedeposte> fichedeposteList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
-    private List<Notification> notificationList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
-    private List<Entretien> entretienList;
+  
     @JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Users users;
@@ -68,32 +61,6 @@ public class Recruteur implements Serializable {
         this.username = username;
     }
 
-    @XmlTransient
-    public List<Fichedeposte> getFichedeposteList() {
-        return fichedeposteList;
-    }
-
-    public void setFichedeposteList(List<Fichedeposte> fichedeposteList) {
-        this.fichedeposteList = fichedeposteList;
-    }
-
-    @XmlTransient
-    public List<Notification> getNotificationList() {
-        return notificationList;
-    }
-
-    public void setNotificationList(List<Notification> notificationList) {
-        this.notificationList = notificationList;
-    }
-
-    @XmlTransient
-    public List<Entretien> getEntretienList() {
-        return entretienList;
-    }
-
-    public void setEntretienList(List<Entretien> entretienList) {
-        this.entretienList = entretienList;
-    }
 
     public Users getUsers() {
         return users;

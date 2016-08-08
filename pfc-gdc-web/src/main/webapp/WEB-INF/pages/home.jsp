@@ -9,8 +9,7 @@
       xmlns:sec="http://www.springframework.org/security/tags"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"> 
     <body>
-        <h1>Title : ${title}</h1>
-        <h1>Message : ${message}</h1>
+        <!--********************************************La sécurité************************-->
         <sec:authorize access="hasRole('ROLE_USER')">
             <!-- For login user -->
             <c:url value="/j_spring_security_logout" var="logoutUrl" />
@@ -39,8 +38,9 @@
                     </p:panel>
                 </f:view>
             </div>
-
         </sec:authorize>
-
+        <!--********************************************La sécurité************************-->
+        <h1>Title : ${title}</h1>
+        <h1>Message : ${message}</h1>
     </body>
 </html>

@@ -18,7 +18,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -43,7 +42,6 @@ public class Experiencesprofessionnelles implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "idTypeDeProfil")
     private Integer idTypeDeProfil;
     @Size(max = 50000)
@@ -53,7 +51,6 @@ public class Experiencesprofessionnelles implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date datededebut;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "datefin")
     @Temporal(TemporalType.DATE)
     private Date datefin;

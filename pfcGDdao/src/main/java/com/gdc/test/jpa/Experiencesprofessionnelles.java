@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.gdc.test.jpa;
 
 import java.io.Serializable;
@@ -18,11 +19,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author a618092
+ * @author Abdoulahi
  */
 @Entity
 @Table(name = "experiencesprofessionnelles")
@@ -41,23 +44,30 @@ public class Experiencesprofessionnelles implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @NotNull
     @Column(name = "idTypeDeProfil")
     private Integer idTypeDeProfil;
+    @Size(max = 50000)
     @Column(name = "description")
     private String description;
     @Column(name = "datededebut")
     @Temporal(TemporalType.DATE)
     private Date datededebut;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "datefin")
     @Temporal(TemporalType.DATE)
     private Date datefin;
+    @Size(max = 650)
     @Column(name = "fonction")
     private String fonction;
+    @Size(max = 3000)
     @Column(name = "environnement")
     private String environnement;
+    @Size(max = 3000)
     @Column(name = "projet")
     private String projet;
+    @Size(max = 3000)
     @Column(name = "missionsRealisees")
     private String missionsRealisees;
     @JoinColumn(name = "idTypeDeProfil", referencedColumnName = "idTypeDeProfil", insertable = false, updatable = false)
@@ -170,7 +180,7 @@ public class Experiencesprofessionnelles implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gdc.test.jpa.Experiencesprofessionnelles[ idTypeDeProfil=" + idTypeDeProfil + " ]";
+        return "entites.Experiencesprofessionnelles[ idTypeDeProfil=" + idTypeDeProfil + " ]";
     }
     
 }

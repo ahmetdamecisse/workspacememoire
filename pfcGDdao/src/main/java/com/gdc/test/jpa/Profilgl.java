@@ -17,11 +17,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author a618092
+ * @author Abdoulahi
  */
 @Entity
 @Table(name = "profilgl")
@@ -31,9 +32,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Profilgl.findByIdTypeDeProfil", query = "SELECT p FROM Profilgl p WHERE p.idTypeDeProfil = :idTypeDeProfil"),
     @NamedQuery(name = "Profilgl.findByVersion", query = "SELECT p FROM Profilgl p WHERE p.version = :version")})
 public class Profilgl implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @NotNull
     @Column(name = "idTypeDeProfil")
     private Integer idTypeDeProfil;
     @Column(name = "version")
@@ -70,6 +73,21 @@ public class Profilgl implements Serializable {
 
     public Integer getIdTypeDeProfil() {
         return idTypeDeProfil;
+    }
+
+    public Profilgl(Integer idTypeDeProfil, Integer version, Formation formation, Langages langages, Langues langues, Experiencesprofessionnelles experiencesprofessionnelles, Materielssystemesexploitation materielssystemesexploitation, Methodologie methodologie, Bdd bdd, Profil profil, Outils outils, Modelisation modelisation) {
+        this.idTypeDeProfil = idTypeDeProfil;
+        this.version = version;
+        this.formation = formation;
+        this.langages = langages;
+        this.langues = langues;
+        this.experiencesprofessionnelles = experiencesprofessionnelles;
+        this.materielssystemesexploitation = materielssystemesexploitation;
+        this.methodologie = methodologie;
+        this.bdd = bdd;
+        this.profil = profil;
+        this.outils = outils;
+        this.modelisation = modelisation;
     }
 
     public void setIdTypeDeProfil(Integer idTypeDeProfil) {
@@ -186,7 +204,7 @@ public class Profilgl implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gdc.test.jpa.Profilgl[ idTypeDeProfil=" + idTypeDeProfil + " ]";
+        return "entites.Profilgl[ idTypeDeProfil=" + idTypeDeProfil + " ]";
     }
-    
+
 }

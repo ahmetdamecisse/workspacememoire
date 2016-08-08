@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.gdc.test.jpa;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,15 +15,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author a618092
+ * @author Abdoulahi
  */
 @Entity
 @Table(name = "candidat")
@@ -33,9 +32,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Candidat.findAll", query = "SELECT c FROM Candidat c"),
     @NamedQuery(name = "Candidat.findByUsername", query = "SELECT c FROM Candidat c WHERE c.username = :username")})
 public class Candidat implements Serializable {
-       private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
     @Column(name = "username")
     private String username;
     @JoinColumn(name = "idTypeDeProfil", referencedColumnName = "idTypeDeProfil")
@@ -44,12 +45,19 @@ public class Candidat implements Serializable {
     @JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Users users;
+   
 
     public Candidat() {
     }
 
     public Candidat(String username) {
         this.username = username;
+    }
+
+    public Candidat(String username, Profil idTypeDeProfil, Users users) {
+        this.username = username;
+        this.idTypeDeProfil = idTypeDeProfil;
+        this.users = users;
     }
 
     public String getUsername() {
@@ -76,6 +84,7 @@ public class Candidat implements Serializable {
         this.users = users;
     }
 
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -98,9 +107,7 @@ public class Candidat implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gdc.test.jpa.Candidat[ username=" + username + " ]";
+        return "entites.Candidat[ username=" + username + " ]";
     }
-
-    
     
 }

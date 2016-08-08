@@ -1,13 +1,14 @@
+
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le: Ven 05 Août 2016 à 10:43
--- Version du serveur: 5.5.24-log
--- Version de PHP: 5.4.3
+-- Client :  127.0.0.1
+-- GÃ©nÃ©rÃ© le :  Dim 07 AoÃ»t 2016 Ã  13:03
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `memoiregdc`
+-- Base de donnÃ©es :  `gdcecandidat`
 --
 
 -- --------------------------------------------------------
@@ -411,11 +412,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`username`, `nom`, `prenom`, `localisation`, `mail`, `telephone`, `password`, `enabled`, `specialite`, `dateDeNaissance`, `version`) VALUES
-('ahmet', 'CISSE', 'Ahmet', 'Parcelles', 'ahmet.dame@hotmail.fr', '771047524', 'ahmet', 1, 'génie logiciel', '1989-01-09 00:00:00', 1),
+('ahmet', 'CISSE', 'Ahmet', 'Parcelles', 'ahmet.dame@hotmail.fr', '771047524', 'ahmet', 1, 'g?nie logiciel', '1989-01-09 00:00:00', 1),
 ('anonymousUser', 'Utilisateur anonyme', NULL, NULL, NULL, NULL, '', 1, NULL, NULL, NULL),
 ('baba', 'GOUGIABY', 'Baba', 'Pikine', 'baba@gmail.com', '775248596', 'baba', 1, 'RT', '1992-06-07 00:00:00', 1),
-('camara', 'CAMARA', 'Ousmane', 'Kolda', 'ouz@gmail.com', '778529635', 'camara', 1, 'génie logiciel', '1990-07-19 00:00:00', 1),
-('maymouna', 'GUEYE', 'Maymouna', 'UCAD', 'gueye@hotmail.fr', '775025485', 'maymouna', 1, 'génie logiciel', '1990-07-25 00:00:00', 1);
+('camara', 'CAMARA', 'Ousmane', 'Kolda', 'ouz@gmail.com', '778529635', 'camara', 1, 'g?nie logiciel', '1990-07-19 00:00:00', 1),
+('maymouna', 'GUEYE', 'Maymouna', 'UCAD', 'gueye@hotmail.fr', '775025485', 'maymouna', 1, 'g?nie logiciel', '1990-07-25 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -448,7 +449,7 @@ INSERT INTO `user_roles` (`user_role_id`, `username`, `role`) VALUES
 (5, 'camara', 'ROLE_RECRUTEUR');
 
 --
--- Contraintes pour les tables exportées
+-- Contraintes pour les tables exportÃ©es
 --
 
 --

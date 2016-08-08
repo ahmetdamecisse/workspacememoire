@@ -26,6 +26,8 @@ public class DaotestJunit {
         // affichage les utilisateurs
         List<Users> users = dao.getALLutilisateur();
         System.out.println("******************************************************************************");
+        System.out.println("******************************************************************************");
+        System.out.println("******************************************************************************");
          System.out.println("*********************Lies des utilisateurs******************************");
         System.out.println(users);
     }

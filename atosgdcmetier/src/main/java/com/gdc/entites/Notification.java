@@ -19,7 +19,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -38,10 +37,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Notification.findByCorpsMessage", query = "SELECT n FROM Notification n WHERE n.corpsMessage = :corpsMessage"),
     @NamedQuery(name = "Notification.findByDateNotification", query = "SELECT n FROM Notification n WHERE n.dateNotification = :dateNotification")})
 public class Notification implements Serializable {
+    @Basic(optional = false)
+    @Lob
+    @Column(name = "pj")
+    private byte[] pj;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "idNotification")
     private Integer idNotification;
     @Size(max = 254)
@@ -53,11 +55,6 @@ public class Notification implements Serializable {
     @Size(max = 50000)
     @Column(name = "corpsMessage")
     private String corpsMessage;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Column(name = "pj")
-    private byte[] pj;
     @Column(name = "dateNotification")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateNotification;
@@ -109,13 +106,6 @@ public class Notification implements Serializable {
         this.corpsMessage = corpsMessage;
     }
 
-    public byte[] getPj() {
-        return pj;
-    }
-
-    public void setPj(byte[] pj) {
-        this.pj = pj;
-    }
 
     public Date getDateNotification() {
         return dateNotification;
@@ -156,6 +146,14 @@ public class Notification implements Serializable {
     @Override
     public String toString() {
         return "com.gdc.atosgdcmetier.entites.Notification[ idNotification=" + idNotification + " ]";
+    }
+
+    public byte[] getPj() {
+        return pj;
+    }
+
+    public void setPj(byte[] pj) {
+        this.pj = pj;
     }
     
 }

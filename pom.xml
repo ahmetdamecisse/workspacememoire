@@ -10,9 +10,8 @@
     <module>pfcgdcmemoire-ear</module>
     <module>pfcGDdao</module>
     <module>pfcGDCservices</module>
-    <module>pfc-gdc-web</module>
     <module>pfcgdcweb2</module>
-    <module>atos-gdc-web</module>
     <module>atosgdcmetier</module>
+    <module>pfc-gdc-web</module>
   </modules>
 </project>
