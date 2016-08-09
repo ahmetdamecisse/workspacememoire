@@ -38,12 +38,15 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addUtilisateur(Users u) {
+        if (ceUsernameEstIlUtiliseDeja(u.getUsername())==false) {
         try {
             em.persist(u);
         } catch (Throwable th) {
             System.out.println("erreur lors de l'ajout de l'utilisateur" + u.getNom());
             throw new pfcgdcexception(th, 2);
-        }
+        }}
+        else
+            System.out.println("=============>>>"+u.getUsername()+" est dèja utilisé. Merci de choisir un autre username!");
     }
 
     public boolean ceUsernameEstIlUtiliseDeja(String username) {
@@ -226,7 +229,12 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addExperiencesprofessionnelles(Experiencesprofessionnelles e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     try {
+            em.persist(e);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de la persistence de l'objet experience pro" + e.getDescription());
+            throw new pfcgdcexception(th, 10);
+        }
     }
 
     public void removeExperiencesprofessionnelles(Experiencesprofessionnelles e) {
@@ -298,7 +306,12 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addFormation(Formation f) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     try {
+            em.persist(f);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de l'ajout de la formation" + f.getIdTypeDeProfil());
+            throw new pfcgdcexception(th, 6);
+        }
     }
 
     public void removeFormation(Formation f) {
@@ -322,7 +335,12 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addLangages(Langages l) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     try {
+            em.persist(l);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de la persistence de l'objet langage" + l.getDomaine());
+            throw new pfcgdcexception(th, 11);
+        }
     }
 
     public void removeLangages(Langages l) {
@@ -346,7 +364,12 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addLangues(Langues l) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     try {
+            em.persist(l);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de la persistence de l'objet Langues" + l.getNom());
+            throw new pfcgdcexception(th, 9);
+        }
     }
 
     public void removeLangues(Langues l) {
@@ -386,7 +409,12 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addMaterielssystemesexploitation(Materielssystemesexploitation m) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         try {
+            em.persist(m);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de la persistence de l'objet materiel et système d'exploitation" + m.getDomaine());
+            throw new pfcgdcexception(th, 8);
+        }
     }
 
     public void removeMaterielssystemesexploitation(Materielssystemesexploitation m) {
@@ -410,7 +438,12 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addMethodologie(Methodologie m) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  try {
+            em.persist(m);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de la persistence de l'objet méthodologie" + m.getDomaine());
+            throw new pfcgdcexception(th, 11);
+        }
     }
 
     public void removeMethodologie(Methodologie m) {
@@ -434,7 +467,12 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addModelisation(Modelisation m) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     try {
+            em.persist(m);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de la persistence de l'objet modélisation" + m.getDomaine());
+            throw new pfcgdcexception(th, 11);
+        }
     }
 
     public void removeModelisation(Modelisation m) {
@@ -482,7 +520,12 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addOutils(Outils o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     try {
+            em.persist(o);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de la persistence de l'objet outil" + o.getDomaine());
+            throw new pfcgdcexception(th, 9);
+        }
     }
 
     public void removeOutils(Outils o) {

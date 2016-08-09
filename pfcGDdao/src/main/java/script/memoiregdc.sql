@@ -1,14 +1,13 @@
-
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Dim 07 Août 2016 à 13:03
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Client: localhost
+-- GÃ©nÃ©rÃ© le: Mar 09 AoÃ»t 2016 Ã  08:37
+-- Version du serveur: 5.5.24-log
+-- Version de PHP: 5.4.3
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -18,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `gdcecandidat`
+-- Base de donnÃ©es: `memoiregdc`
 --
 
 -- --------------------------------------------------------
@@ -68,8 +67,15 @@ CREATE TABLE IF NOT EXISTS `bdd` (
   `idTypeDeProfil` int(11) NOT NULL,
   `domaine` varchar(254) DEFAULT NULL,
   `niveau` varchar(254) DEFAULT NULL,
-  PRIMARY KEY (`idTypeDeProfil`)
+  PRIMARY KEY (`idTypeDeProfil`,`domaine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `bdd`
+--
+
+INSERT INTO `bdd` (`idTypeDeProfil`, `domaine`, `niveau`) VALUES
+(32, "domaine1", NULL);
 
 -- --------------------------------------------------------
 
@@ -83,6 +89,13 @@ CREATE TABLE IF NOT EXISTS `candidat` (
   PRIMARY KEY (`username`),
   KEY `FK_association1` (`idTypeDeProfil`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `candidat`
+--
+
+INSERT INTO `candidat` (`username`, `idTypeDeProfil`) VALUES
+('doudou6', 32);
 
 -- --------------------------------------------------------
 
@@ -154,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `experiencesprofessionnelles` (
   `environnement` varchar(3000) DEFAULT NULL,
   `projet` varchar(3000) DEFAULT NULL,
   `missionsRealisees` varchar(3000) DEFAULT NULL,
-  PRIMARY KEY (`idTypeDeProfil`)
+  PRIMARY KEY (`idTypeDeProfil`,`datededebut`,`datefin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -213,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `formation` (
   `universite` varchar(254) DEFAULT NULL,
   `anneeObtention` date DEFAULT NULL,
   `mention` varchar(254) DEFAULT NULL,
-  PRIMARY KEY (`idTypeDeProfil`)
+  PRIMARY KEY (`idTypeDeProfil`,`nomDiplome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -226,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `langages` (
   `idTypeDeProfil` int(11) NOT NULL,
   `domaine` varchar(254) DEFAULT NULL,
   `niveau` varchar(254) DEFAULT NULL,
-  PRIMARY KEY (`idTypeDeProfil`)
+  PRIMARY KEY (`idTypeDeProfil`,`domaine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -239,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `langues` (
   `idTypeDeProfil` int(11) NOT NULL,
   `nom` varchar(254) DEFAULT NULL,
   `niveau` varchar(254) DEFAULT NULL,
-  PRIMARY KEY (`idTypeDeProfil`)
+  PRIMARY KEY (`idTypeDeProfil`,`nom`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -276,7 +289,7 @@ CREATE TABLE IF NOT EXISTS `materielssystemesexploitation` (
   `idTypeDeProfil` int(11) NOT NULL,
   `domaine` varchar(254) DEFAULT NULL,
   `niveau` varchar(254) DEFAULT NULL,
-  PRIMARY KEY (`idTypeDeProfil`)
+  PRIMARY KEY (`idTypeDeProfil`,`domaine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -289,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `methodologie` (
   `idTypeDeProfil` int(11) NOT NULL,
   `domaine` varchar(254) DEFAULT NULL,
   `niveau` varchar(254) DEFAULT NULL,
-  PRIMARY KEY (`idTypeDeProfil`)
+  PRIMARY KEY (`idTypeDeProfil`,`domaine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -302,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `modelisation` (
   `idTypeDeProfil` int(11) NOT NULL,
   `domaine` varchar(254) DEFAULT NULL,
   `niveau` varchar(254) DEFAULT NULL,
-  PRIMARY KEY (`idTypeDeProfil`)
+  PRIMARY KEY (`idTypeDeProfil`,`domaine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -333,7 +346,7 @@ CREATE TABLE IF NOT EXISTS `outils` (
   `idTypeDeProfil` int(11) NOT NULL,
   `domaine` varchar(254) DEFAULT NULL,
   `niveau` varchar(254) DEFAULT NULL,
-  PRIMARY KEY (`idTypeDeProfil`)
+  PRIMARY KEY (`idTypeDeProfil`,`domaine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -349,7 +362,14 @@ CREATE TABLE IF NOT EXISTS `profil` (
   `competencesFonctionnelles` varchar(1000) DEFAULT NULL,
   `etatProfil` varchar(254) DEFAULT NULL,
   PRIMARY KEY (`idTypeDeProfil`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+
+--
+-- Contenu de la table `profil`
+--
+
+INSERT INTO `profil` (`idTypeDeProfil`, `nombreAnneesExperience`, `principalesCompetences`, `competencesFonctionnelles`, `etatProfil`) VALUES
+(32, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -362,6 +382,13 @@ CREATE TABLE IF NOT EXISTS `profilgl` (
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`idTypeDeProfil`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `profilgl`
+--
+
+INSERT INTO `profilgl` (`idTypeDeProfil`, `version`) VALUES
+(32, 0);
 
 -- --------------------------------------------------------
 
@@ -416,6 +443,9 @@ INSERT INTO `users` (`username`, `nom`, `prenom`, `localisation`, `mail`, `telep
 ('anonymousUser', 'Utilisateur anonyme', NULL, NULL, NULL, NULL, '', 1, NULL, NULL, NULL),
 ('baba', 'GOUGIABY', 'Baba', 'Pikine', 'baba@gmail.com', '775248596', 'baba', 1, 'RT', '1992-06-07 00:00:00', 1),
 ('camara', 'CAMARA', 'Ousmane', 'Kolda', 'ouz@gmail.com', '778529635', 'camara', 1, 'g?nie logiciel', '1990-07-19 00:00:00', 1),
+('doudou4', 'CISSE', 'Doudou', 'KM', 'doudou@gmail.com', '771047524', 'doudou4', 1, 'IGL', '3890-12-20 00:00:00', 1),
+('doudou5', 'CISSE', 'Doudou', 'KM', 'doudou@gmail.com', '771047524', 'doudou5', 1, 'IGL', '3890-12-20 00:00:00', 1),
+('doudou6', 'CISSE', 'kDoudou', 'KM', 'doudou@gmail.com', '771047524', 'doudou5', 1, 'IGL', '3890-12-20 00:00:00', 1),
 ('maymouna', 'GUEYE', 'Maymouna', 'UCAD', 'gueye@hotmail.fr', '775025485', 'maymouna', 1, 'g?nie logiciel', '1990-07-25 00:00:00', 1);
 
 -- --------------------------------------------------------
@@ -449,7 +479,7 @@ INSERT INTO `user_roles` (`user_role_id`, `username`, `role`) VALUES
 (5, 'camara', 'ROLE_RECRUTEUR');
 
 --
--- Contraintes pour les tables exportées
+-- Contraintes pour les tables exportÃ©es
 --
 
 --

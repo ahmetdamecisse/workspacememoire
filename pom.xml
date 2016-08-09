@@ -13,5 +13,7 @@
     <module>pfcgdcweb2</module>
     <module>atosgdcmetier</module>
     <module>pfc-gdc-web</module>
+    <module>pfcwebGdc</module>
+    <module>atos-gdc-web</module>
   </modules>
 </project>
