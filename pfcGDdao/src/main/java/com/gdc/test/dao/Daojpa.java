@@ -38,20 +38,17 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addUtilisateur(Users u) {
-        if (ceUsernameEstIlUtiliseDeja(u.getUsername())==false) {
         try {
             em.persist(u);
         } catch (Throwable th) {
             System.out.println("erreur lors de l'ajout de l'utilisateur" + u.getNom());
             throw new pfcgdcexception(th, 2);
-        }}
-        else
-            System.out.println("=============>>>"+u.getUsername()+" est dèja utilisé. Merci de choisir un autre username!");
+        }
     }
 
     public boolean ceUsernameEstIlUtiliseDeja(String username) {
         List<Users> users = getALLutilisateur();
-        if (users.size()>0) {
+        if (users.size() > 0) {
             for (Iterator<Users> iterator = users.iterator(); iterator.hasNext();) {
                 Users next = iterator.next();
                 if (next.getUsername().equalsIgnoreCase(username)) {
@@ -229,7 +226,7 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addExperiencesprofessionnelles(Experiencesprofessionnelles e) {
-     try {
+        try {
             em.persist(e);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet experience pro" + e.getDescription());
@@ -306,7 +303,7 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addFormation(Formation f) {
-     try {
+        try {
             em.persist(f);
         } catch (Throwable th) {
             System.out.println("erreur lors de l'ajout de la formation" + f.getIdTypeDeProfil());
@@ -335,7 +332,7 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addLangages(Langages l) {
-     try {
+        try {
             em.persist(l);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet langage" + l.getDomaine());
@@ -364,7 +361,7 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addLangues(Langues l) {
-     try {
+        try {
             em.persist(l);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet Langues" + l.getNom());
@@ -409,7 +406,7 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addMaterielssystemesexploitation(Materielssystemesexploitation m) {
-         try {
+        try {
             em.persist(m);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet materiel et système d'exploitation" + m.getDomaine());
@@ -438,7 +435,7 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addMethodologie(Methodologie m) {
-  try {
+        try {
             em.persist(m);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet méthodologie" + m.getDomaine());
@@ -467,7 +464,7 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addModelisation(Modelisation m) {
-     try {
+        try {
             em.persist(m);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet modélisation" + m.getDomaine());
@@ -520,7 +517,7 @@ public class Daojpa implements Idao, Serializable {
     }
 
     public void addOutils(Outils o) {
-     try {
+        try {
             em.persist(o);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet outil" + o.getDomaine());
@@ -619,4 +616,65 @@ public class Daojpa implements Idao, Serializable {
     public String loginControl(String login, String password) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+//Créer un utilisateur de type candidat ayant un profil gl
+    @Override
+    public boolean ajoutUtilisateurCandidatProfilGl(Users u, Profil profil, Profilgl profilgl, Candidat candidat, Formation f1, Formation f2, Formation f3, Bdd bdd1, Bdd bdd2, Bdd bd3, Materielssystemesexploitation mat1, Materielssystemesexploitation mat2, Materielssystemesexploitation mat3, Methodologie meth1, Methodologie meth2, Methodologie meth3, Modelisation modl1, Modelisation model2, Modelisation model3, Outils outil1, Outils outils2, Outils outil3, Langages langage1, Langages langage2, Langages laangage3, Langues langue1, Langues langue2, Langues langue3, Experiencesprofessionnelles exp1, Experiencesprofessionnelles exp2, Experiencesprofessionnelles exp3) {
+
+        if (ceUsernameEstIlUtiliseDeja(u.getUsername()) == false && u.getUsername() != null) {
+           
+                //il est un utilisateur
+                addUtilisateur(u);
+                //il a un profil
+                addProfil(profil);
+                //Son profil est de type GL
+                profilgl.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+                profilgl.setProfil(profil);//pour régler les conflits de relation pouvant subvenir entre profil et profil gl oneTOone
+                addProfilgl(profilgl);
+                //l'utilisateur est un candidat
+                candidat.setUsername(u.getUsername());
+                candidat.setIdTypeDeProfil(profil);//pour régler les conflits de relation pouvant subvenir
+                candidat.setUsers(u);//pour régler les conflits de relation pouvant subvenir
+                addCandidat(candidat);
+                //Formations du candidat
+                f1.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
+                if (f1.getNomDiplome() == null) {
+                    f1.setNomDiplome("default1");
+                }
+                addFormation(f1);
+                f2.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
+                if (f2.getNomDiplome() == null) {
+                    f2.setNomDiplome("default2");
+                }
+                addFormation(f2);
+                f3.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
+                if (f3.getNomDiplome() == null) {
+                    f3.setNomDiplome("default3");
+                }
+                addFormation(f3);
+                //les bases de données
+                bdd1.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
+                if (bdd1.getDomaine()== null) {
+                    bdd1.setDomaine("default1");
+                }
+                addBdd(bdd1);
+                 bdd2.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
+                if (bdd2.getDomaine()== null) {
+                    bdd2.setDomaine("default2");
+                }
+                addBdd(bdd2);
+                 bd3.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
+                if (bd3.getDomaine()== null) {
+                    bd3.setDomaine("default3");
+                }
+                addBdd(bd3);
+
+                return true;
+                
+        } else {
+            System.out.println("=============>>>" + u.getUsername() + " est dèja utilisé. Merci de choisir un autre username!");
+        }
+        return false;
+    }
+
 }

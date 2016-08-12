@@ -59,43 +59,43 @@
 
                         <p:growl id="growl" sticky="true" showDetail="true"/>
 
-                        <p:wizard flowListener="#{controlRedigerCV.onFlowProcess}">
+                        <p:wizard flowListener="#{redigercvBean.onFlowProcess}">
 
                             <p:tab id="personal" title="Informations personnelles">
                                 <p:panel header="Identité">
                                     <p:messages />
                                     <h:panelGrid columns="2" columnClasses="label, value">
                                         <h:outputText value="Nom: *" style="color: #282828;font-size: 15px" />
-                                        <p:inputText value="#{controlRedigerCV.user.nom}" required="true" label="Nom" style="width: 300px; height: 35px"/>
+                                        <p:inputText value="#{redigercvBean.user.nom}" required="true" label="Nom" style="width: 300px; height: 35px"/>
 
                                         <h:outputText value="Prénom: *" style="color: #282828;font-size: 15px" />
-                                        <p:inputText value="#{controlRedigerCV.user.prenom}" required="true" label="Prénom" style="width: 300px; height: 35px"/>
+                                        <p:inputText value="#{redigercvBean.user.prenom}" required="true" label="Prénom" style="width: 300px; height: 35px"/>
 
                                         <h:outputText value="Adresse: *" style="color: #282828;font-size: 15px" />
-                                        <p:inputText value="#{controlRedigerCV.user.localisation}" required="true" label="Adresse" style="width: 300px; height: 35px"/>
+                                        <p:inputText value="#{redigercvBean.user.localisation}" required="true" label="Adresse" style="width: 300px; height: 35px"/>
 
                                         <h:outputText value="E-mail: *" style="color: #282828;font-size: 15px"/>
-                                        <p:inputText value="#{controlRedigerCV.user.mail}" required="true" label="E-mail" style="width: 300px; height: 35px"/>
+                                        <p:inputText value="#{redigercvBean.user.mail}" required="true" label="E-mail" style="width: 300px; height: 35px"/>
 
                                         <h:outputText value="Téléphone: *"  style="color: #282828;font-size: 15px"/>
-                                        <p:inputMask id="Telephone" value="#{controlRedigerCV.user.telephone}" mask="(99999) 99-999-99-99" required="true" style="width: 300px; height: 35px"/>
+                                        <p:inputMask id="Telephone" value="#{redigercvBean.user.telephone}" mask="(99999) 99-999-99-99" required="true" style="width: 300px; height: 35px"/>
 
                                         <h:outputText value="Login: *" style="color: #282828;font-size: 15px" />
-                                        <p:inputText value="#{controlRedigerCV.user.login}" required="true" label="Login" style="width: 300px; height: 35px"/>
+                                        <p:inputText value="#{redigercvBean.user.login}" required="true" label="Login" style="width: 300px; height: 35px"/>
 
                                         <h:outputText value="Mot de passe: *" style="color: #282828;font-size: 15px" />
-                                        <p:password id="Motdepasse" value="#{controlRedigerCV.user.password}" feedback="true" required="true" style="width: 300px; height: 35px"/>
+                                        <p:password id="Motdepasse" value="#{redigercvBean.user.password}" feedback="true" required="true" style="width: 300px; height: 35px"/>
 
                                         <h:outputText value="Spécialité: *" style="color: #282828;font-size: 15px" />
-                                        <p:inputTextarea rows="3" cols="18" counter="display2" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{controlRedigerCV.user.specialite}" placeholder="Ingénieur en génie logiciel" style="width: 300px; height: 70px"/>
+                                        <p:inputTextarea rows="3" cols="18" counter="display2" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigercvBean.user.specialite}" placeholder="Ingénieur en génie logiciel" style="width: 300px; height: 70px"/>
                                         <h:outputText id="display2" style="color: #282828;font-size: 15px" />
                                         <h:outputText value=""  style="width: 300px; height: 35px"/>
 
                                         <h:outputText value="Date de naissance: *" style="color: #282828;font-size: 15px" />
-                                        <p:calendar id="datenaiss1" value="#{controlRedigerCV.user.dateDeNaissance}" pattern="dd-MM-yyyy" mask="true" required="true"  style="width: 300px; height: 35px"/>
+                                        <p:calendar id="datenaiss1" value="#{redigercvBean.user.dateDeNaissance}" pattern="dd-MM-yyyy" mask="true" required="true"  style="width: 300px; height: 35px"/>
 
                                         <h:outputText value="Passer à la dernière: "  style="color: #282828;font-size: 15px"/>
-                                        <h:selectBooleanCheckbox value="#{controlRedigerCV.skip}" />
+                                        <h:selectBooleanCheckbox value="#{redigercvBean.skip}" />
                                     </h:panelGrid>
                                 </p:panel>
                             </p:tab>
@@ -105,16 +105,16 @@
                                     <p:messages />
                                     <h:panelGrid columns="2" columnClasses="label, value">
                                         <h:outputText value="Nom du diplôme: *" style="color: #282828; font-size: 15px"/>
-                                        <p:inputText value="#{controlRedigerCV.formation.nomDiplome}" required="true"/>
+                                        <p:inputText value="#{redigercvBean.formation.nomDiplome}" required="true"/>
 
                                         <h:outputText value="Université/Ecole: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.formation.universite}" required="true"/>
+                                        <p:inputText value="#{redigercvBean.formation.universite}" required="true"/>
 
                                         <h:outputText value="Année d'obtention: *" style="color: #282828" />
-                                        <p:calendar id="anneeobtention" value="#{controlRedigerCV.formation.anneeOptention}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <p:calendar id="anneeobtention" value="#{redigercvBean.formation.anneeOptention}" pattern="dd-MM-yyyy" mask="true" required="true" />
 
                                         <h:outputText value="Mention: *" style="color: #282828" />
-                                        <p:selectOneMenu id="console" value="#{controlRedigerCV.formation.mention}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="console" value="#{redigercvBean.formation.mention}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Passable" itemValue="Passable" />
                                             <f:selectItem itemLabel="Assez-Bien" itemValue="Assez-Bien" />
                                             <f:selectItem itemLabel="Bien" itemValue="Bien" />
@@ -127,16 +127,16 @@
                                     <p:messages />
                                     <h:panelGrid columns="2" columnClasses="label, value">
                                         <h:outputText value="Nom du diplôme: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.formation.nomDiplome}" required="true"/>
+                                        <p:inputText value="#{redigercvBean.formation.nomDiplome}" required="true"/>
 
                                         <h:outputText value="Université/Ecole: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.formation.universite}" required="true"/>
+                                        <p:inputText value="#{redigercvBean.formation.universite}" required="true"/>
 
                                         <h:outputText value="Année d'obtention: *" style="color: #282828" />
-                                        <p:calendar id="anneeobtention3" value="#{controlRedigerCV.formation.anneeOptention}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <p:calendar id="anneeobtention3" value="#{redigercvBean.formation.anneeOptention}" pattern="dd-MM-yyyy" mask="true" required="true" />
 
                                         <h:outputText value="Mention: *" style="color: #282828" />
-                                        <p:selectOneMenu id="console33" value="#{controlRedigerCV.formation.mention}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="console33" value="#{redigercvBean.formation.mention}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Passable" itemValue="Passable" />
                                             <f:selectItem itemLabel="Assez-Bien" itemValue="Assez-Bien" />
                                             <f:selectItem itemLabel="Bien" itemValue="Bien" />
@@ -149,16 +149,16 @@
                                     <p:messages />
                                     <h:panelGrid columns="2" columnClasses="label, value">
                                         <h:outputText value="Nom du diplôme: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.formation.nomDiplome}" required="true"/>
+                                        <p:inputText value="#{redigercvBean.formation.nomDiplome}" required="true"/>
 
                                         <h:outputText value="Université/Ecole: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.formation.universite}" required="true"/>
+                                        <p:inputText value="#{redigercvBean.formation.universite}" required="true"/>
 
                                         <h:outputText value="Année d'obtention: *" style="color: #282828" />
-                                        <p:calendar id="anneeobtention2" value="#{controlRedigerCV.formation.anneeOptention}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <p:calendar id="anneeobtention2" value="#{redigercvBean.formation.anneeOptention}" pattern="dd-MM-yyyy" mask="true" required="true" />
 
                                         <h:outputText value="Mention: *" style="color: #282828" />
-                                        <p:selectOneMenu id="console22" value="#{controlRedigerCV.formation.mention}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="console22" value="#{redigercvBean.formation.mention}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Passable" itemValue="Passable" />
                                             <f:selectItem itemLabel="Assez-Bien" itemValue="Assez-Bien" />
                                             <f:selectItem itemLabel="Bien" itemValue="Bien" />
@@ -166,7 +166,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Passer à la dernière: *" style="color: #282828" />
-                                        <h:selectBooleanCheckbox value="#{controlRedigerCV.skip}" />
+                                        <h:selectBooleanCheckbox value="#{redigercvBean.skip}" />
                                     </h:panelGrid>
                                 </p:panel>
                             </p:tab>
@@ -176,15 +176,15 @@
                                     <p:messages />
                                     <h:panelGrid columns="2" columnClasses="label, value">
                                         <h:outputText value="Nombre d'années d'expériences: *" style="color: #282828"/>
-                                        <p:spinner id="nbreanneesexperience" value="#{controlRedigerCV.profil.nombreAnneesExperience}" min="0" max="20" required="true" />
+                                        <p:spinner id="nbreanneesexperience" value="#{redigercvBean.profil.nombreAnneesExperience}" min="0" max="20" required="true" />
 
                                         <h:outputText value="Principales compétences: *" style="color: #282828"/>
-                                        <p:inputTextarea rows="6" cols="20" counter="display4" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{controlRedigerCV.profil.principalesCompetences}" placeholder="Exemple : 1 Conception, Analyse, Coordination de projet,  Recettes, Bases de données. 2 Sciences de l’information et du système"/>
+                                        <p:inputTextarea rows="6" cols="20" counter="display4" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigercvBean.profil.principalesCompetences}" placeholder="Exemple : 1 Conception, Analyse, Coordination de projet,  Recettes, Bases de données. 2 Sciences de l’information et du système"/>
                                         <h:outputText id="display4" style="color: #282828" />
                                         <h:outputText value="" />
 
                                         <h:outputText value="Compétences fonctionnelles: *" style="color: #282828"/>
-                                        <p:inputTextarea rows="4" cols="20" counter="display3" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{controlRedigerCV.profil.competencesFonctionnelles}" placeholder="Exemple: Ferroviaire, Protection sociale, Analyse de données (BI) et CMMI"/>
+                                        <p:inputTextarea rows="4" cols="20" counter="display3" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigercvBean.profil.competencesFonctionnelles}" placeholder="Exemple: Ferroviaire, Protection sociale, Analyse de données (BI) et CMMI"/>
                                         <h:outputText id="display3" style="color: #282828" />
                                         <h:outputText value="" />
                                     </h:panelGrid>
@@ -194,37 +194,37 @@
                                     <h:panelGrid columns="2" columnClasses="label, value">
 
                                         <h:outputText value="Anglais: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.langues.nom}" required="true" label="Email"/>
+                                        <p:inputText value="#{redigercvBean.langues.nom}" required="true" label="Email"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="console1" value="#{controlRedigerCV.langues.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="console1" value="#{redigercvBean.langues.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Lu" itemValue="Lu" />
                                             <f:selectItem itemLabel="Lu et parlé" itemValue="Lu et parlé" />
                                             <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Français: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.langues.nom}" required="true" label="Français"/>
+                                        <p:inputText value="#{redigercvBean.langues.nom}" required="true" label="Français"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="console2" value="#{controlRedigerCV.langues.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="console2" value="#{redigercvBean.langues.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Lu" itemValue="Lu" />
                                             <f:selectItem itemLabel="Lu et parlé" itemValue="Lu et parlé" />
                                             <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Autre: " style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.langues.nom}"  label="Email"/>
+                                        <p:inputText value="#{redigercvBean.langues.nom}"  label="Email"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="console3" value="#{controlRedigerCV.langues.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="console3" value="#{redigercvBean.langues.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Lu" itemValue="Lu" />
                                             <f:selectItem itemLabel="Lu et parlé" itemValue="Lu et parlé" />
                                             <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Passer à la dernière: *" style="color: #282828" />
-                                        <h:selectBooleanCheckbox value="#{controlRedigerCV.skip}" />
+                                        <h:selectBooleanCheckbox value="#{redigercvBean.skip}" />
                                     </h:panelGrid>
                                 </p:panel>
                             </p:tab>
@@ -235,30 +235,30 @@
                                     <p:panelGrid columns="4" layout="grid">
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.langage.domaine}" required="true" label="nom" placeholder="PHP"/>
+                                        <p:inputText value="#{redigercvBean.langage.domaine}" required="true" label="nom" placeholder="PHP"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolel1" value="#{controlRedigerCV.langage.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolel1" value="#{redigercvBean.langage.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.langage.domaine}" required="true" label="nom" placeholder="JEE"/>
+                                        <p:inputText value="#{redigercvBean.langage.domaine}" required="true" label="nom" placeholder="JEE"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolel2" value="#{controlRedigerCV.langage.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolel2" value="#{redigercvBean.langage.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.langage.domaine}" required="true" label="nom" placeholder="XML"/>
+                                        <p:inputText value="#{redigercvBean.langage.domaine}" required="true" label="nom" placeholder="XML"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolel3" value="#{controlRedigerCV.langage.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolel3" value="#{redigercvBean.langage.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
@@ -270,30 +270,30 @@
                                     <p:panelGrid columns="4" layout="grid">
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.outils.domaine}" required="true" label="nom" placeholder="maven"/>
+                                        <p:inputText value="#{redigercvBean.outils.domaine}" required="true" label="nom" placeholder="maven"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolell1" value="#{controlRedigerCV.outils.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolell1" value="#{redigercvBean.outils.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.outils.domaine}" required="true" label="nom" placeholder="svn"/>
+                                        <p:inputText value="#{redigercvBean.outils.domaine}" required="true" label="nom" placeholder="svn"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolell2" value="#{controlRedigerCV.outils.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolell2" value="#{redigercvBean.outils.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.outils.niveau}" required="true" label="nom" placeholder="Tomcat"/>
+                                        <p:inputText value="#{redigercvBean.outils.niveau}" required="true" label="nom" placeholder="Tomcat"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolell33" value="#{controlRedigerCV.langage.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolell33" value="#{redigercvBean.langage.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
@@ -305,30 +305,30 @@
                                     <p:messages />
                                     <p:panelGrid columns="4" layout="grid">
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.methodologie.domaine}" required="true" label="nom" placeholder="CMMI"/>
+                                        <p:inputText value="#{redigercvBean.methodologie.domaine}" required="true" label="nom" placeholder="CMMI"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolelll1" value="#{controlRedigerCV.methodologie.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolelll1" value="#{redigercvBean.methodologie.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.methodologie.domaine}" required="true" label="nom" placeholder="CMMI"/>
+                                        <p:inputText value="#{redigercvBean.methodologie.domaine}" required="true" label="nom" placeholder="CMMI"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolelll2" value="#{controlRedigerCV.methodologie.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolelll2" value="#{redigercvBean.methodologie.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.methodologie.domaine}" required="true" label="nom" placeholder="CMMI"/>
+                                        <p:inputText value="#{redigercvBean.methodologie.domaine}" required="true" label="nom" placeholder="CMMI"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolell3" value="#{controlRedigerCV.methodologie.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolell3" value="#{redigercvBean.methodologie.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
@@ -339,30 +339,30 @@
                                     <p:messages />
                                     <p:panelGrid columns="4" layout="grid">
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.modelisation.domaine}" required="true" label="nom" placeholder="UML"/>
+                                        <p:inputText value="#{redigercvBean.modelisation.domaine}" required="true" label="nom" placeholder="UML"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolelllll2" value="#{controlRedigerCV.modelisation.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolelllll2" value="#{redigercvBean.modelisation.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.modelisation.domaine}" required="true" label="nom" placeholder="MERISE"/>
+                                        <p:inputText value="#{redigercvBean.modelisation.domaine}" required="true" label="nom" placeholder="MERISE"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolellll2" value="#{controlRedigerCV.modelisation.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolellll2" value="#{redigercvBean.modelisation.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.modelisation.domaine}" required="true" label="nom" placeholder="Talbot et Rivard"/>
+                                        <p:inputText value="#{redigercvBean.modelisation.domaine}" required="true" label="nom" placeholder="Talbot et Rivard"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolellll3" value="#{controlRedigerCV.modelisation.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolellll3" value="#{redigercvBean.modelisation.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
@@ -373,30 +373,30 @@
                                     <p:messages />
                                     <p:panelGrid columns="4" layout="grid">
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.bdd.domaine}" required="true" label="nom" placeholder="SQL"/>
+                                        <p:inputText value="#{redigercvBean.bdd.domaine}" required="true" label="nom" placeholder="SQL"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolell5" value="#{controlRedigerCV.bdd.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolell5" value="#{redigercvBean.bdd.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.bdd.domaine}" required="true" label="nom" placeholder="PLSQL"/>
+                                        <p:inputText value="#{redigercvBean.bdd.domaine}" required="true" label="nom" placeholder="PLSQL"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolell55" value="#{controlRedigerCV.bdd.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolell55" value="#{redigercvBean.bdd.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.bdd.domaine}" required="true" label="nom" placeholder="SQL Server"/>
+                                        <p:inputText value="#{redigercvBean.bdd.domaine}" required="true" label="nom" placeholder="SQL Server"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolell555" value="#{controlRedigerCV.bdd.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolell555" value="#{redigercvBean.bdd.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
@@ -407,30 +407,30 @@
                                     <p:messages />
                                     <p:panelGrid columns="4" layout="grid">
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.materielssystemesexploitation.domaine}" required="true" label="nom" placeholder="Lunux"/>
+                                        <p:inputText value="#{redigercvBean.materielssystemesexploitation.domaine}" required="true" label="nom" placeholder="Lunux"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolell6" value="#{controlRedigerCV.materielssystemesexploitation.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolell6" value="#{redigercvBean.materielssystemesexploitation.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.materielssystemesexploitation.domaine}" required="true" label="nom" placeholder="Windows"/>
+                                        <p:inputText value="#{redigercvBean.materielssystemesexploitation.domaine}" required="true" label="nom" placeholder="Windows"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolell686" value="#{controlRedigerCV.materielssystemesexploitation.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolell686" value="#{redigercvBean.materielssystemesexploitation.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{controlRedigerCV.materielssystemesexploitation.domaine}" required="true" label="nom" placeholder="MAC OS"/>
+                                        <p:inputText value="#{redigercvBean.materielssystemesexploitation.domaine}" required="true" label="nom" placeholder="MAC OS"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="consolell66" value="#{controlRedigerCV.materielssystemesexploitation.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="consolell66" value="#{redigercvBean.materielssystemesexploitation.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Connaissance" itemValue="1" />
                                             <f:selectItem itemLabel="Maîtrise" itemValue="2" />
                                             <f:selectItem itemLabel="Expert" itemValue="3" />
@@ -444,33 +444,33 @@
                                     <p:messages />
                                     <h:panelGrid columns="2" columnClasses="label, value">
                                         <h:outputText value="Description: *" style="color: #282828"/>
-                                        <p:inputTextarea rows="5" cols="20" counter="display5" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{controlRedigerCV.experiencesprofessionnelles.description}" placeholder="Par exemple: Optimisation de logiciels  de traitement du son"/>
+                                        <p:inputTextarea rows="5" cols="20" counter="display5" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigercvBean.experiencesprofessionnelles.description}" placeholder="Par exemple: Optimisation de logiciels  de traitement du son"/>
                                         <h:outputText id="display5" style="color: #282828" />
                                         <h:outputText value="" />
 
                                         <h:outputText value="Début: *" style="color: #282828"/>
-                                        <p:calendar id="debut" value="#{controlRedigerCV.experiencesprofessionnelles.datedebut}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <p:calendar id="debut" value="#{redigercvBean.experiencesprofessionnelles.datedebut}" pattern="dd-MM-yyyy" mask="true" required="true" />
 
                                         <h:outputText value="Fin: *" style="color: #282828"/>
-                                        <p:calendar id="fin" value="#{controlRedigerCV.experiencesprofessionnelles.dateFin}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <p:calendar id="fin" value="#{redigercvBean.experiencesprofessionnelles.dateFin}" pattern="dd-MM-yyyy" mask="true" required="true" />
 
                                         <h:outputText value="Fonctions: *" style="color: #282828"/>
-                                        <p:inputTextarea rows="5" cols="20" counter="display6" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{controlRedigerCV.experiencesprofessionnelles.fonction}" placeholder="Par exemple Implémentation d’algorithmes  d’optimisation numériques"/>
+                                        <p:inputTextarea rows="5" cols="20" counter="display6" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigercvBean.experiencesprofessionnelles.fonction}" placeholder="Par exemple Implémentation d’algorithmes  d’optimisation numériques"/>
                                         <h:outputText id="display6" style="color: #282828" />
                                         <h:outputText value="" />
 
                                         <h:outputText value="Environnement: *" style="color: #282828"/>
-                                        <p:inputTextarea rows="5" cols="20" counter="display7" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{controlRedigerCV.experiencesprofessionnelles.environnement}" placeholder="Par exemple C, Assembleur, Algorithmes classiques d’optimisation, Mathématiques avancées"/>
+                                        <p:inputTextarea rows="5" cols="20" counter="display7" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigercvBean.experiencesprofessionnelles.environnement}" placeholder="Par exemple C, Assembleur, Algorithmes classiques d’optimisation, Mathématiques avancées"/>
                                         <h:outputText id="display7" style="color: #282828" />
                                         <h:outputText value="" />
 
                                         <h:outputText value="Projet: *" style="color: #282828"/>
-                                        <p:inputTextarea rows="5" cols="20" counter="display8" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{controlRedigerCV.experiencesprofessionnelles.projet}" placeholder="par exemple Optimisation en temps de calcul et en mémoire d’un outil de traitement du son "/>
+                                        <p:inputTextarea rows="5" cols="20" counter="display8" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigercvBean.experiencesprofessionnelles.projet}" placeholder="par exemple Optimisation en temps de calcul et en mémoire d’un outil de traitement du son "/>
                                         <h:outputText id="display8" style="color: #282828" />
                                         <h:outputText value="" />
 
                                         <h:outputText value="Missions: *" style="color: #282828"/>
-                                        <p:inputTextarea rows="5" cols="20" counter="display1" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{controlRedigerCV.experiencesprofessionnelles.missionsRealisees}" placeholder="Par exemple: 1 Recherche d’algorithmes standards 2 Conception de nouveaux algorithmes (optimisation numérique) 3 Optimiser des algorithmes standards (Mathématiques)"/>
+                                        <p:inputTextarea rows="5" cols="20" counter="display1" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigercvBean.experiencesprofessionnelles.missionsRealisees}" placeholder="Par exemple: 1 Recherche d’algorithmes standards 2 Conception de nouveaux algorithmes (optimisation numérique) 3 Optimiser des algorithmes standards (Mathématiques)"/>
                                         <h:outputText id="display1" style="color: #282828" />
                                         <h:outputText value="" />
                                     </h:panelGrid>
@@ -487,13 +487,13 @@
                                         </h:panelGrid>
                                         <h:panelGrid columns="2" columnClasses="label, value">
                                             <h:outputText value="Street: " />
-                                            <h:outputText value="#{controlRedigerCV.user.localisation}" styleClass="outputLabel"/>
+                                            <h:outputText value="#{redigercvBean.user.localisation}" styleClass="outputLabel"/>
 
                                             <h:outputText value="Postal: " />
-                                            <h:outputText value="#{controlRedigerCV.user.telephone}" styleClass="outputLabel"/>
+                                            <h:outputText value="#{redigercvBean.user.telephone}" styleClass="outputLabel"/>
 
                                             <h:outputText value="City: " />
-                                            <h:outputText value="#{controlRedigerCV.user.localisation}" styleClass="outputLabel"/>
+                                            <h:outputText value="#{redigercvBean.user.localisation}" styleClass="outputLabel"/>
                                         </h:panelGrid>
                                         <h:panelGrid columns="2" >
                                             <f:facet name="header2">
@@ -502,7 +502,7 @@
                                         </h:panelGrid>
                                     </h:panelGrid>
 
-                                    <p:commandButton value="Submit" actionListener="#{controlRedigerCV.save}" update="growl" process="@this"/>
+                                    <p:commandButton value="Submit" actionListener="#{redigercvBean.save}" update="growl" process="@this"/>
                                 </p:panel>
                             </p:tab>
                         </p:wizard>

@@ -20,7 +20,6 @@ import javax.validation.constraints.Size;
 @Embeddable
 public class FaireuntestPK implements Serializable {
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 150)
     @Column(name = "username")
     private String username;

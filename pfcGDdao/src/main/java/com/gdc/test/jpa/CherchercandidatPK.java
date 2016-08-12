@@ -20,7 +20,6 @@ import javax.validation.constraints.Size;
 @Embeddable
 public class CherchercandidatPK implements Serializable {
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 150)
     @Column(name = "Rec_username")
     private String recusername;

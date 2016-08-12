@@ -44,7 +44,6 @@ public class Experiencesprofessionnelles implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "idTypeDeProfil")
     private Integer idTypeDeProfil;
     @Size(max = 50000)
