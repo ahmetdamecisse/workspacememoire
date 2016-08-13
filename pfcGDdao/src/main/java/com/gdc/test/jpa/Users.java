@@ -8,7 +8,6 @@ package com.gdc.test.jpa;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -43,8 +42,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
     @NamedQuery(name = "Users.findByEnabled", query = "SELECT u FROM Users u WHERE u.enabled = :enabled"),
     @NamedQuery(name = "Users.findBySpecialite", query = "SELECT u FROM Users u WHERE u.specialite = :specialite"),
-    @NamedQuery(name = "Users.findByDateDeNaissance", query = "SELECT u FROM Users u WHERE u.dateDeNaissance = :dateDeNaissance"),
-    @NamedQuery(name = "Users.findByVersion", query = "SELECT u FROM Users u WHERE u.version = :version")})
+    @NamedQuery(name = "Users.findByDateDeNaissance", query = "SELECT u FROM Users u WHERE u.dateDeNaissance = :dateDeNaissance")})
+
+//,@NamedQuery(name = "Users.findByVersion", query = "SELECT u FROM Users u WHERE u.version = :version")
+
 public class Users implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

@@ -12,7 +12,6 @@
         <module>pfcGDCservices</module>
         <module>pfcgdcweb2</module>
         <module>atosgdcmetier</module>
-        <module>pfc-gdc-web</module>
         <module>pfcwebGdc</module>
     </modules>
 </project>
