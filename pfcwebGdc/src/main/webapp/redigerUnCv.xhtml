@@ -81,7 +81,7 @@
                                         <p:inputMask id="Telephone" value="#{redigercvBean.user.telephone}" mask="(99999) 99-999-99-99" required="true" style="width: 300px; height: 35px"/>
 
                                         <h:outputText value="Login: *" style="color: #282828;font-size: 15px" />
-                                        <p:inputText value="#{redigercvBean.user.login}" required="true" label="Login" style="width: 300px; height: 35px"/>
+                                        <p:inputText value="#{redigercvBean.user.username}" required="true" label="Login" style="width: 300px; height: 35px"/>
 
                                         <h:outputText value="Mot de passe: *" style="color: #282828;font-size: 15px" />
                                         <p:password id="Motdepasse" value="#{redigercvBean.user.password}" feedback="true" required="true" style="width: 300px; height: 35px"/>
@@ -111,7 +111,7 @@
                                         <p:inputText value="#{redigercvBean.formation.universite}" required="true"/>
 
                                         <h:outputText value="Année d'obtention: *" style="color: #282828" />
-                                        <p:calendar id="anneeobtention" value="#{redigercvBean.formation.anneeOptention}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <p:calendar id="anneeobtention" value="#{redigercvBean.formation.anneeObtention}" pattern="dd-MM-yyyy" mask="true" required="true" />
 
                                         <h:outputText value="Mention: *" style="color: #282828" />
                                         <p:selectOneMenu id="console" value="#{redigercvBean.formation.mention}" style="width:170px" required="true">
@@ -133,7 +133,7 @@
                                         <p:inputText value="#{redigercvBean.formation.universite}" required="true"/>
 
                                         <h:outputText value="Année d'obtention: *" style="color: #282828" />
-                                        <p:calendar id="anneeobtention3" value="#{redigercvBean.formation.anneeOptention}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <p:calendar id="anneeobtention3" value="#{redigercvBean.formation.anneeObtention}" pattern="dd-MM-yyyy" mask="true" required="true" />
 
                                         <h:outputText value="Mention: *" style="color: #282828" />
                                         <p:selectOneMenu id="console33" value="#{redigercvBean.formation.mention}" style="width:170px" required="true">
@@ -155,7 +155,7 @@
                                         <p:inputText value="#{redigercvBean.formation.universite}" required="true"/>
 
                                         <h:outputText value="Année d'obtention: *" style="color: #282828" />
-                                        <p:calendar id="anneeobtention2" value="#{redigercvBean.formation.anneeOptention}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <p:calendar id="anneeobtention2" value="#{redigercvBean.formation.anneeObtention}" pattern="dd-MM-yyyy" mask="true" required="true" />
 
                                         <h:outputText value="Mention: *" style="color: #282828" />
                                         <p:selectOneMenu id="console22" value="#{redigercvBean.formation.mention}" style="width:170px" required="true">
@@ -194,30 +194,30 @@
                                     <h:panelGrid columns="2" columnClasses="label, value">
 
                                         <h:outputText value="Anglais: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigercvBean.langues.nom}" required="true" label="Email"/>
+                                        <p:inputText value="#{redigercvBean.langue.nom}" required="true" label="Email"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="console1" value="#{redigercvBean.langues.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="console1" value="#{redigercvBean.langue.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Lu" itemValue="Lu" />
                                             <f:selectItem itemLabel="Lu et parlé" itemValue="Lu et parlé" />
                                             <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Français: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigercvBean.langues.nom}" required="true" label="Français"/>
+                                        <p:inputText value="#{redigercvBean.langue.nom}" required="true" label="Français"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="console2" value="#{redigercvBean.langues.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="console2" value="#{redigercvBean.langue.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Lu" itemValue="Lu" />
                                             <f:selectItem itemLabel="Lu et parlé" itemValue="Lu et parlé" />
                                             <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Autre: " style="color: #282828"/>
-                                        <p:inputText value="#{redigercvBean.langues.nom}"  label="Email"/>
+                                        <p:inputText value="#{redigercvBean.langue.nom}"  label="Email"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="console3" value="#{redigercvBean.langues.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="console3" value="#{redigercvBean.langue.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Lu" itemValue="Lu" />
                                             <f:selectItem itemLabel="Lu et parlé" itemValue="Lu et parlé" />
                                             <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
@@ -449,10 +449,10 @@
                                         <h:outputText value="" />
 
                                         <h:outputText value="Début: *" style="color: #282828"/>
-                                        <p:calendar id="debut" value="#{redigercvBean.experiencesprofessionnelles.datedebut}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <p:calendar id="debut" value="#{redigercvBean.experiencesprofessionnelles.datededebut}" pattern="dd-MM-yyyy" mask="true" required="true" />
 
                                         <h:outputText value="Fin: *" style="color: #282828"/>
-                                        <p:calendar id="fin" value="#{redigercvBean.experiencesprofessionnelles.dateFin}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <p:calendar id="fin" value="#{redigercvBean.experiencesprofessionnelles.datefin}" pattern="dd-MM-yyyy" mask="true" required="true" />
 
                                         <h:outputText value="Fonctions: *" style="color: #282828"/>
                                         <p:inputTextarea rows="5" cols="20" counter="display6" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigercvBean.experiencesprofessionnelles.fonction}" placeholder="Par exemple Implémentation d’algorithmes  d’optimisation numériques"/>
